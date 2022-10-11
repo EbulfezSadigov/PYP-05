@@ -76,3 +76,24 @@
 
 
 // console.log(res)
+
+
+Array.prototype.customMap = function (cb) {
+    const result = [];
+
+    for (let i = 0; i < this.length; i++) {
+        result.push(cb(this[i], i, this));
+    }
+    return result;
+}
+
+const mappedNumbers = [1, 2, 3,4,5].customMap((num) => num + 2);
+
+
+Array.prototype.customReduce = function (cb) {
+    let acc = 0;
+    for (let index = 0; index < this.length; index++) {
+        cb(acc = acc + this[index])
+    }
+    return acc;
+}
